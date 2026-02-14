@@ -3,10 +3,11 @@ const nameOfCity = document.getElementById('nameOfCity');
 const cityNameE = document.getElementById('cityName');
 const tempE = document.getElementById('temp');
 const weatherTypeE = document.getElementById('weatherType');
+import { API_KEY, BASE_URL} from './config.js';
  
  async function getweather(cityName){
   
-    const response= await fetch(`http://api.weatherapi.com/v1/current.json?key=4405ec6ffd3e42dea33154951261901&q=${cityName}&aqi=yes`)
+    const response= await fetch(API_KEY.replace('${cityName}', cityName))
     const data= await response.json();
     console.log(data);
       cityNameE.innerText= `${data.location.name}`;
